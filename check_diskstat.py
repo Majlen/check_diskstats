@@ -34,6 +34,8 @@ def main(argv):
     if statsTable.exists():
         old = getStats(statsTable)
     else:
+        #Copy stats
+        copyfile('/proc/diskstats', tempName)
         print("Creating buffer")
         return 3
 
@@ -54,7 +56,7 @@ def main(argv):
         msg += resolver[key] + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
         for k in outKeys:
             perfData += resolver[key] + ":" + k + "=%.2f " % val[k]
-        perfData += '\n'
+        perfData += ' '
 
     print(msg + '|' + perfData)
 
