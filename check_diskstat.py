@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, argparse, re
+import sys, re
 from pathlib import Path
 from shutil import copyfile, move
 from glob import glob
@@ -18,12 +18,6 @@ resolver = dict()
 
 def main(argv):
     global validNums
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-m', help='minimum temperature')
-    args = (parser.parse_args())
-
-    if args.m:
-        minTemp = "%.1f" % float(args.m)
 
     validNums = getValidMajorNums()
 
