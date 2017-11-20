@@ -11,6 +11,7 @@ validNums = ""
 keys = ["reads", "reads_merged", "reads_sectors", "reads_ms",
         "writes", "writes_merged", "writes_sectors", "writes_ms",
         "io_in_progress", "io_ms", "io_ms_weighted"]
+devices = ["sd", "virtblk", "xvd"]
 
 outKeys = ["tps", "read", "write", "avg_request_size", "avg_queue_size", "await"]
 
@@ -115,7 +116,7 @@ def getValidMajorNums():
                 headerFound = True
         for line in read:
             arr = line.split()
-            if "sd" in arr[1]:
+            if arr[1] in devices:
                 majNums.append(arr[0])
 
     return majNums
