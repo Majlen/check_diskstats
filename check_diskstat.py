@@ -47,7 +47,10 @@ def main(argv):
     perfData = ""
 
     for (key, val) in data.items():
-        msg += resolver[key] + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
+        if key in resolver:
+            msg += resolver[key] + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
+        else:
+            msg += key + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
         for k in outKeys:
             perfData += resolver[key] + ":" + k + "=%.2f " % val[k]
         perfData += ' '
