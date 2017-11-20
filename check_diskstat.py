@@ -47,12 +47,13 @@ def main(argv):
     perfData = ""
 
     for (key, val) in data.items():
+        disk_id = key
         if key in resolver:
-            msg += resolver[key] + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
-        else:
-            msg += key + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
+            disk_id = resolver[key]
+
+        msg += disk_id + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
         for k in outKeys:
-            perfData += resolver[key] + ":" + k + "=%.2f " % val[k]
+            perfData += disk_id + ":" + k + "=%.2f " % val[k]
 
     print(msg + '|' + perfData)
 
