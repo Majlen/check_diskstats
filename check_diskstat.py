@@ -53,7 +53,6 @@ def main(argv):
             msg += key + ": Read %.0f kB/s; Write %.0f kB/s; %.0f IO/s\n" % (val['read'] / 1024, val['write'] / 1024, val['tps'])
         for k in outKeys:
             perfData += resolver[key] + ":" + k + "=%.2f " % val[k]
-        perfData += ' '
 
     print(msg + '|' + perfData)
 
