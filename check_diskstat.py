@@ -11,7 +11,7 @@ validNums = ""
 keys = ["reads", "reads_merged", "reads_sectors", "reads_ms",
         "writes", "writes_merged", "writes_sectors", "writes_ms",
         "io_in_progress", "io_ms", "io_ms_weighted"]
-devices = ["sd", "virtblk", "xvd"]
+devices = ["sd", "virtblk", "xvd", "mmc"]
 
 outKeys = ["tps", "read", "write", "avg_request_size", "avg_queue_size", "await"]
 
